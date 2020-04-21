@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/image2A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image2A"
+        app:layout_constraintBottom_toTopOf="@+id/image2B"
+        app:layout_constraintEnd_toStartOf="@+id/image3A"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image1A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image1A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:contentDescription="image1A"
+        app:layout_constraintBottom_toTopOf="@+id/image1B"
+        app:layout_constraintEnd_toStartOf="@+id/image2A"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image1B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image1B"
+        app:layout_constraintBottom_toTopOf="@+id/image1C"
+        app:layout_constraintEnd_toStartOf="@+id/image2B"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image1A"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image3B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image3B"
+        app:layout_constraintBottom_toTopOf="@+id/image3C"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image2B"
+        app:layout_constraintTop_toBottomOf="@+id/image3A"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image3A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image3A"
+        app:layout_constraintBottom_toTopOf="@+id/image3B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image2A"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image2C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image2C"
+        app:layout_constraintBottom_toTopOf="@+id/CheckButton"
+        app:layout_constraintEnd_toStartOf="@+id/image3C"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image1C"
+        app:layout_constraintTop_toBottomOf="@+id/image2B"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image2B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image2B"
+        app:layout_constraintBottom_toTopOf="@+id/image2C"
+        app:layout_constraintEnd_toStartOf="@+id/image3B"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image1C"
+        app:layout_constraintTop_toBottomOf="@+id/image2A"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image3C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image3C"
+        app:layout_constraintBottom_toTopOf="@+id/CheckButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image2C"
+        app:layout_constraintTop_toBottomOf="@+id/image3B"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image1C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image1C"
+        app:layout_constraintBottom_toTopOf="@+id/CheckButton"
+        app:layout_constraintEnd_toStartOf="@+id/image2C"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image1B"
+        app:srcCompat="@drawable/aa" />
+
+<!--    <androidx.constraintlayout.widget.Group-->
+<!--        android:id="@+id/group"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content" />-->
+
+    <Button
+        android:id="@+id/CheckButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check"
+        app:layout_constraintBottom_toTopOf="@+id/image2S"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image2C" />
+
+    <ImageView
+        android:id="@+id/image1S"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FAF6F6"
+        android:baselineAlignBottom="false"
+        android:contentDescription="image1S"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image2S"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CheckButton"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image2S"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image2S"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image3S"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image1S"
+        app:layout_constraintTop_toBottomOf="@+id/CheckButton"
+        app:srcCompat="@drawable/aa" />
+
+    <ImageView
+        android:id="@+id/image3S"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="image3S"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/image2S"
+        app:layout_constraintTop_toBottomOf="@+id/CheckButton"
+        app:srcCompat="@drawable/aa" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
