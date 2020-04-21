@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         for (int i = 0; i < table.length; i++) {
+
             for (int j = 0; j < table[i].length; j++) {
                 result[i][j] = table[i][i];
             }
@@ -90,6 +91,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        image1A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[0][0] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[0][0] = i;
+                            image1A.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
         image2A.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +113,104 @@ public class MainActivity extends AppCompatActivity {
                         if (answerNo[i]) {
                             result[0][1] = i;
                             image2A.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image3A.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[0][2] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[0][2] = i;
+                            image3A.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image1B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[1][0] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[1][0] = i;
+                            image1B.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image2B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[1][1] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[1][1] = i;
+                            image2B.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image3B.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[1][2] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[1][2] = i;
+                            image3B.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image1C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[2][0] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[2][0] = i;
+                            image1C.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image2C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[2][1] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[2][1] = i;
+                            image2C.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                    , null, MainActivity.this.getPackageName()));
+                        }
+                    }
+                }
+            }
+        });
+        image3C.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (table[2][2] == 0) {
+                    for (int i = 0; i < answerNo.length; i++) {
+                        if (answerNo[i]) {
+                            result[2][2] = i;
+                            image3C.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
                                     , null, MainActivity.this.getPackageName()));
                         }
                     }
