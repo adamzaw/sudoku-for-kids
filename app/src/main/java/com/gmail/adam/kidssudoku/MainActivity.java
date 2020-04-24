@@ -45,15 +45,15 @@ public class MainActivity extends AppCompatActivity {
         final ImageView image20 = findViewById(R.id.image20);
         final ImageView image21 = findViewById(R.id.image21);
         final ImageView image22 = findViewById(R.id.image22);
-        imageViewHashMap.put("00",image00);
-        imageViewHashMap.put("01",image01);
-        imageViewHashMap.put("02",image02);
-        imageViewHashMap.put("10",image10);
-        imageViewHashMap.put("11",image11);
-        imageViewHashMap.put("12",image12);
-        imageViewHashMap.put("20",image20);
-        imageViewHashMap.put("21",image21);
-        imageViewHashMap.put("22",image22);
+        imageViewHashMap.put("00", image00);
+        imageViewHashMap.put("01", image01);
+        imageViewHashMap.put("02", image02);
+        imageViewHashMap.put("10", image10);
+        imageViewHashMap.put("11", image11);
+        imageViewHashMap.put("12", image12);
+        imageViewHashMap.put("20", image20);
+        imageViewHashMap.put("21", image21);
+        imageViewHashMap.put("22", image22);
 
         final ImageView image1S = findViewById(R.id.image1S);
         final ImageView image2S = findViewById(R.id.image2S);
@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
         image1S.setImageResource(source1);
         image2S.setImageResource(source2);
         image3S.setImageResource(source3);
-
 
 
         image1S.setOnClickListener(new View.OnClickListener() {
@@ -109,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
 
             stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
-                            table[((int) stringImageViewEntry.getKey().charAt(0) - 48)][((int)stringImageViewEntry.getKey().charAt(1) - 48)]
+                            table[((int) stringImageViewEntry.getKey().charAt(0) - 48)][((int) stringImageViewEntry.getKey().charAt(1) - 48)]
                     , null, MainActivity.this.getPackageName()));
 
             stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (table[( (int) stringImageViewEntry.getKey().charAt(0) - 48)][((int)stringImageViewEntry.getKey().charAt(1) - 48)] == 0) {
+                    if (table[((int) stringImageViewEntry.getKey().charAt(0) - 48)][((int) stringImageViewEntry.getKey().charAt(1) - 48)] == 0) {
                         for (int i = 0; i < answerNo.length; i++) {
                             if (answerNo[i]) {
                                 result[0][0] = i;
@@ -129,133 +128,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 //
-//        image00.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[0][0] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[0][0] = i;
-//                            image00.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
 //
-//        image01.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[0][1] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[0][1] = i;
-//                            image01.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image02.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[0][2] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[0][2] = i;
-//                            image02.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image10.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[1][0] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[1][0] = i;
-//                            image10.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image11.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[1][1] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[1][1] = i;
-//                            image11.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image12.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[1][2] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[1][2] = i;
-//                            image12.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image20.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[2][0] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[2][0] = i;
-//                            image20.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image21.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[2][1] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[2][1] = i;
-//                            image21.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
-//        image22.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (table[2][2] == 0) {
-//                    for (int i = 0; i < answerNo.length; i++) {
-//                        if (answerNo[i]) {
-//                            result[2][2] = i;
-//                            image22.setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-//                                    , null, MainActivity.this.getPackageName()));
-//                        }
-//                    }
-//                }
-//            }
-//        });
 //        checkButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -272,69 +145,15 @@ public class MainActivity extends AppCompatActivity {
 //                image1S.setBackgroundColor(Color.parseColor("#13EF1C"));
 //            }
 //        });
-
-//        for (int i = 0; i < table.length; i++) {
-//            for (int j = 0; j < table[i].length; j++) {
-//                switch (i) {
-//                    case 0:
-//                        switch (j) {
-//                            case 0:
-//                                image00.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 1:
-//                                image01.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 2:
-//                                image02.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                        }
-//                    case 1:
-//                        switch (j) {
-//                            case 0:
-//                                image10.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 1:
-//                                image11.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 2:
-//                                image12.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                        }
-//                    case 2:
-//                        switch (j) {
-//                            case 0:
-//                                image20.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 1:
-//                                image21.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                            case 2:
-//                                image22.setImageResource(getResources().getIdentifier("@drawable/a0" + table[i][j]
-//                                        , null, this.getPackageName()));
-//                                break;
-//                        }
-//                }
-//            }
-//        }
-
-
     }
 
-  public boolean check(int row, int col, int value){
-      for (int i = 0; i < result.length; i++) {
-          if (result[row][i] == value || result[i][col] == value){
-              return false;
-          }
+    public boolean check(int row, int col, int value) {
+        for (int i = 0; i < result.length; i++) {
+            if (result[row][i] == value || result[i][col] == value) {
+                return false;
+            }
 
-      }
-      return true;
-  }
+        }
+        return true;
+    }
 }
