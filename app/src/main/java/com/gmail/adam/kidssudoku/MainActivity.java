@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < table.length; i++) {
 
             for (int j = 0; j < table[i].length; j++) {
-                result[i][j] = table[i][i];
+                result[i][j] = table[i][j];
             }
         }
         Button checkButton = findViewById(R.id.CheckButton);
@@ -45,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         final ImageView image20 = findViewById(R.id.image20);
         final ImageView image21 = findViewById(R.id.image21);
         final ImageView image22 = findViewById(R.id.image22);
+        final ImageView imageA0 = findViewById(R.id.imageA0);
+        final ImageView imageA1 = findViewById(R.id.imageA1);
+        final ImageView imageA2 = findViewById(R.id.imageA2);
         imageViewHashMap.put("00", image00);
         imageViewHashMap.put("01", image01);
         imageViewHashMap.put("02", image02);
@@ -54,51 +56,43 @@ public class MainActivity extends AppCompatActivity {
         imageViewHashMap.put("20", image20);
         imageViewHashMap.put("21", image21);
         imageViewHashMap.put("22", image22);
-
-        final ImageView image1S = findViewById(R.id.image1S);
-        final ImageView image2S = findViewById(R.id.image2S);
-        final ImageView image3S = findViewById(R.id.image3S);
-
-        int source1 = getResources().getIdentifier("@drawable/a01", null, this.getPackageName());
-        int source2 = getResources().getIdentifier("@drawable/a02", null, this.getPackageName());
-        int source3 = getResources().getIdentifier("@drawable/a03", null, this.getPackageName());
-        image1S.setImageResource(source1);
-        image2S.setImageResource(source2);
-        image3S.setImageResource(source3);
+        imageViewHashMap.put("A0", imageA0);
+        imageViewHashMap.put("A1", imageA1);
+        imageViewHashMap.put("A2", imageA2);
 
 
-        image1S.setOnClickListener(new View.OnClickListener() {
+        imageA0.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                image1S.setBackgroundColor(Color.parseColor("#13EF1C"));
-                image2S.setBackgroundColor(Color.parseColor("#FAF6F6"));
-                image3S.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA0.setBackgroundColor(Color.parseColor("#13EF1C"));
+                imageA1.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA2.setBackgroundColor(Color.parseColor("#FAF6F6"));
                 answerNo[0] = true;
                 answerNo[1] = false;
                 answerNo[2] = false;
 
             }
         });
-        image2S.setOnClickListener(new View.OnClickListener() {
+        imageA1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                image1S.setBackgroundColor(Color.parseColor("#FAF6F6"));
-                image2S.setBackgroundColor(Color.parseColor("#13EF1C"));
-                image3S.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA0.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA1.setBackgroundColor(Color.parseColor("#13EF1C"));
+                imageA2.setBackgroundColor(Color.parseColor("#FAF6F6"));
                 answerNo[0] = false;
                 answerNo[1] = true;
                 answerNo[2] = false;
             }
         });
-        image3S.setOnClickListener(new View.OnClickListener() {
+        imageA2.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                image1S.setBackgroundColor(Color.parseColor("#FAF6F6"));
-                image2S.setBackgroundColor(Color.parseColor("#FAF6F6"));
-                image3S.setBackgroundColor(Color.parseColor("#13EF1C"));
+                imageA0.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA1.setBackgroundColor(Color.parseColor("#FAF6F6"));
+                imageA2.setBackgroundColor(Color.parseColor("#13EF1C"));
                 answerNo[0] = false;
                 answerNo[1] = false;
                 answerNo[2] = true;
@@ -106,53 +100,62 @@ public class MainActivity extends AppCompatActivity {
         });
 
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
+            if (!stringImageViewEntry.getKey().contains("A")) {
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
+                                table[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
+                                        [((int) stringImageViewEntry.getKey().charAt(1) - 48)]
+                        , null, MainActivity.this.getPackageName()));
 
-            stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
-                            table[((int) stringImageViewEntry.getKey().charAt(0) - 48)][((int) stringImageViewEntry.getKey().charAt(1) - 48)]
-                    , null, MainActivity.this.getPackageName()));
+                stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (table[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
+                                [((int) stringImageViewEntry.getKey().charAt(1) - 48)] == 0) {
+                            for (int i = 0; i < answerNo.length; i++) {
+                                if (answerNo[i]) {
+                                    result[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
+                                            [((int) stringImageViewEntry.getKey().charAt(1) - 48)] = i + 1;
+                                    stringImageViewEntry.getValue().setImageResource(
+                                            getResources().getIdentifier("@drawable/a0" + (i + 1)
+                                            , null, MainActivity.this.getPackageName()));
+                                }
+                            }
+                        }
 
-            stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (table[((int) stringImageViewEntry.getKey().charAt(0) - 48)][((int) stringImageViewEntry.getKey().charAt(1) - 48)] == 0) {
-                        for (int i = 0; i < answerNo.length; i++) {
-                            if (answerNo[i]) {
-                                result[0][0] = i;
-                                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" + (i + 1)
-                                        , null, MainActivity.this.getPackageName()));
+                    }
+                });
+            } else {
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
+                        "@drawable/a0" + ((int) stringImageViewEntry.getKey().charAt(1) - 47),
+                        null, this.getPackageName()));
+            }
+        }
+
+
+        checkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < result.length; i++) {
+                    for (int j = 0; j < result[i].length; j++) {
+                        if (table[i][j] == 0) {
+                            if (check(i, j, result[i][j])) {
+                                imageViewHashMap.get(""+ i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
+                            } else {
+                                imageViewHashMap.get(""+ i + j).setBackgroundColor(Color.parseColor("#CA2C2C"));
                             }
                         }
                     }
-
                 }
-            });
-        }
-//
-//
-//        checkButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                for (int i = 0; i < result.length; i++) {
-//                    for (int j = 0; j < result[i].length; j++) {
-//                        if (table[i][j] == 0){
-//                            if (i == 0){
-//                                int sum = result[0][j] + result[1][j] +result[2][j];
-//                                if ()
-//                            }
-//                        }
-//                    }
-//                }
-//                image1S.setBackgroundColor(Color.parseColor("#13EF1C"));
-//            }
-//        });
+            }
+        });
     }
 
     public boolean check(int row, int col, int value) {
         for (int i = 0; i < result.length; i++) {
             if (result[row][i] == value || result[i][col] == value) {
+                if (!(i == row || i == col))
                 return false;
             }
-
         }
         return true;
     }

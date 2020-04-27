@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="image1B"
         app:layout_constraintBottom_toTopOf="@+id/image20"
-        app:layout_constraintEnd_toStartOf="@+id/image10"
+        app:layout_constraintEnd_toStartOf="@+id/image11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image00"
@@ -125,47 +125,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Check"
-        app:layout_constraintBottom_toTopOf="@+id/image2S"
+        app:layout_constraintBottom_toTopOf="@+id/imageA1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image21" />
 
     <ImageView
-        android:id="@+id/image1S"
+        android:id="@+id/imageA0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FAF6F6"
         android:baselineAlignBottom="false"
         android:contentDescription="image1S"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image2S"
+        app:layout_constraintEnd_toStartOf="@+id/imageA1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
         app:srcCompat="@drawable/aa" />
 
     <ImageView
-        android:id="@+id/image2S"
+        android:id="@+id/imageA1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="image2S"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image3S"
+        app:layout_constraintEnd_toStartOf="@+id/imageA2"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/image1S"
+        app:layout_constraintStart_toEndOf="@+id/imageA0"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
         app:srcCompat="@drawable/aa" />
 
     <ImageView
-        android:id="@+id/image3S"
+        android:id="@+id/imageA2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="image3S"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/image2S"
+        app:layout_constraintStart_toEndOf="@+id/imageA1"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
         app:srcCompat="@drawable/aa" />
 
