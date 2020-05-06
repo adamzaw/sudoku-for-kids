@@ -25,9 +25,9 @@ class Sudoku {
         return true;
     }
 
-    boolean next(int row, int col) {
-        if (row == 2 && col == 2) return true;
-        else if (row == 2) return solve(0, col + 1, table);
+    boolean next(int row, int col, int size) {
+        if (row == size && col == size) return true;
+        else if (row == size) return solve(0, col + 1, table);
         else return solve(row + 1, col, table);
     }
 
@@ -38,7 +38,7 @@ class Sudoku {
             for (int i = 1; i <= sukoku.length; i++) {
                 if (check(row, col, i, sukoku)) {
                     result[row][col] = i;
-                    if (next(row, col)) {
+                    if (next(row, col, sukoku.length - 1)) {
                         return true;
                     }
                 }
@@ -46,7 +46,7 @@ class Sudoku {
             result[row][col] = 0;
             return false;
         }
-        return next(row, col);
+        return next(row, col, sukoku.length - 1);
     }
 
     int[][] generate(int size) {
@@ -72,7 +72,7 @@ class Sudoku {
 
         setSudoku(result);
 
-        solve(0,0,table);
+        solve(0, 0, table);
 
         for (int i = 0; i < size; i++) {
             result[r.ints(0, size).findFirst().getAsInt()]

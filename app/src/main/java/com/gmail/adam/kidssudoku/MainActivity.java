@@ -31,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(),ThreeActivity.class));
             }
+        });
 
-
+        fourButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(),FourActivity.class));
+            }
         });
 
 
