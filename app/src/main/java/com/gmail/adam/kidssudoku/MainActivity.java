@@ -9,13 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Sudoku s = new Sudoku();
+
     private static final String TAG = "MainActivity";
-    private int[][] table = {{1, 0, 3}, {2, 3, 0}, {3, 1, 2}};
+    //private int[][] table = {{1, 0, 3}, {2, 3, 0}, {3, 1, 2}};
+    private int[][] table = s.generate(3);
     private int[][] result = new int[3][3];
     private int answerNo = -1;
     private HashMap<String, ImageView> imageViewHashMap = new HashMap<String, ImageView>();
@@ -26,9 +30,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started.");
 
-        for (int i = 0; i < table.length; i++) {
+        s.setSudoku(table);
 
-            for (int j = 0; j < table[i].length; j++) {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table.length; j++) {
+
                 result[i][j] = table[i][j];
             }
         }
@@ -61,31 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
-            if (!stringImageViewEntry.getKey().contains("A")) {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
-                                table[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
-                                        [((int) stringImageViewEntry.getKey().charAt(1) - 48)]
-                        , null, MainActivity.this.getPackageName()));
+            final int first = ((int) stringImageViewEntry.getKey().charAt(0) - 48);
+            final int second = ((int) stringImageViewEntry.getKey().charAt(1) - 48);
 
-                stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (table[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
-                                [((int) stringImageViewEntry.getKey().charAt(1) - 48)] == 0) {
 
-                            result[((int) stringImageViewEntry.getKey().charAt(0) - 48)]
-                                    [((int) stringImageViewEntry.getKey().charAt(1) - 48)] = answerNo;
-
-                            stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier("@drawable/a0" + (answerNo)
-                                            , null, MainActivity.this.getPackageName()));
-                        }
-
-                    }
-                });
-            } else {
+            if (stringImageViewEntry.getKey().contains("A")) {
                 stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
-                        "@drawable/a0" + ((int) stringImageViewEntry.getKey().charAt(1) - 47),
+                        ("@drawable/a0" + (second + 1)),
                         null, this.getPackageName()));
 
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
@@ -96,8 +84,25 @@ public class MainActivity extends AppCompatActivity {
                             imageViewHashMap.get("A" + (answerNo - 1)).setBackgroundColor(Color.parseColor("#FAF6F6"));
                         }
                         stringImageViewEntry.getValue().setBackgroundColor(Color.parseColor("#13EF1C"));
-                        answerNo = (int) stringImageViewEntry.getKey().charAt(1) - 47;
+                        answerNo = second + 1;
 
+                    }
+                });
+
+            } else {
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
+                                table[first][second]
+                        , null, MainActivity.this.getPackageName()));
+
+                stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (table[first][second] == 0 && answerNo != -1) {
+                            result[first][second] = answerNo;
+                            stringImageViewEntry.getValue().setImageResource(
+                                    getResources().getIdentifier(("@drawable/a0" + answerNo)
+                                            , null, MainActivity.this.getPackageName()));
+                        }
                     }
                 });
             }
@@ -107,10 +112,12 @@ public class MainActivity extends AppCompatActivity {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 for (int i = 0; i < result.length; i++) {
                     for (int j = 0; j < result[i].length; j++) {
                         if (table[i][j] == 0) {
-                            if (check(i, j, result[i][j])) {
+                            if (s.check(i, j, result[i][j], result)) {
                                 imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
                             } else {
                                 imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#CA2C2C"));
@@ -122,13 +129,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public boolean check(int row, int col, int value) {
-        for (int i = 0; i < result.length; i++) {
-            if (result[row][i] == value || result[i][col] == value) {
-                if (!(i == row || i == col))
-                    return false;
-            }
-        }
-        return true;
-    }
+
 }
