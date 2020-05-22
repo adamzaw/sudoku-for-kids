@@ -22,21 +22,30 @@ public class MainActivity extends AppCompatActivity {
 
         Button threeButton = findViewById(R.id.three);
         Button fourButton = findViewById(R.id.four);
+        Button fiveButton = findViewById(R.id.five);
 
         threeButton.setText("3x3");
         fourButton.setText("4x4");
+        fiveButton.setText("5x5");
 
-        threeButton.setOnClickListener(new View.OnClickListener(){
+        threeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),ThreeActivity.class));
+                startActivity(new Intent(v.getContext(), ThreeActivity.class));
             }
         });
 
-        fourButton.setOnClickListener(new View.OnClickListener(){
+        fourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),FourActivity.class));
+                startActivity(new Intent(v.getContext(), FourActivity.class));
+            }
+        });
+
+        fiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), FiveActivity.class));
             }
         });
 

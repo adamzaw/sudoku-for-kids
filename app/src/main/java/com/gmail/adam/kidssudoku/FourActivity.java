@@ -113,9 +113,16 @@ public class FourActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (table[first][second] == 0 && answerNo != -1) {
-                            result[first][second] = answerNo;
+                            int answerValue;
+                            if (result[first][second] != answerNo) {
+                                answerValue = answerNo;
+
+                            } else {
+                                answerValue = 0;
+                            }
+                            result[first][second] = answerValue;
                             stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier(("@drawable/a0" + answerNo)
+                                    getResources().getIdentifier(("@drawable/a0" + answerValue)
                                             , null, FourActivity.this.getPackageName()));
                         }
                     }
