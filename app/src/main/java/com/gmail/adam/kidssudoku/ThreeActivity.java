@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class ThreeActivity extends AppCompatActivity {
 
@@ -30,6 +31,9 @@ public class ThreeActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         s.setSudoku(table);
+
+        Random random = new Random();
+        final String draw = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
 
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
@@ -72,7 +76,7 @@ public class ThreeActivity extends AppCompatActivity {
 
             if (stringImageViewEntry.getKey().contains("A")) {
                 stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
-                        ("@drawable/a0" + (second + 1)),
+                        (draw + (second + 1)),
                         null, this.getPackageName()));
 
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
@@ -89,7 +93,7 @@ public class ThreeActivity extends AppCompatActivity {
                 });
 
             } else {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(draw +
                                 table[first][second]
                         , null, ThreeActivity.this.getPackageName()));
 
@@ -106,7 +110,7 @@ public class ThreeActivity extends AppCompatActivity {
                             }
                             result[first][second] = answerValue;
                             stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier(("@drawable/a0" + answerValue)
+                                    getResources().getIdentifier((draw + answerValue)
                                             , null, ThreeActivity.this.getPackageName()));
                         }
                     }

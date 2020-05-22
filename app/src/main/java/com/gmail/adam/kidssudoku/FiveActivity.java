@@ -11,16 +11,19 @@ import android.widget.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class FiveActivity extends AppCompatActivity {
     private Sudoku s = new Sudoku();
 
     private static final String TAG = "FiveActivity";
-    //private int[][] table = {{1, 0, 3}, {2, 3, 0}, {3, 1, 2}};
     private int[][] table = s.generate(5);
     private int[][] result = new int[5][5];
     private int answerNo = -1;
     private HashMap<String, ImageView> imageViewHashMap = new HashMap<String, ImageView>();
+
+    Random random = new Random();
+    final String draw = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +110,7 @@ public class FiveActivity extends AppCompatActivity {
 
             if (stringImageViewEntry.getKey().contains("A")) {
                 stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
-                        ("@drawable/a0" + (second + 1)),
+                        (draw + (second + 1)),
                         null, this.getPackageName()));
 
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
@@ -124,7 +127,7 @@ public class FiveActivity extends AppCompatActivity {
                 });
 
             } else {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(draw +
                                 table[first][second]
                         , null, FiveActivity.this.getPackageName()));
 
@@ -141,7 +144,7 @@ public class FiveActivity extends AppCompatActivity {
                             }
                             result[first][second] = answerValue;
                             stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier(("@drawable/a0" + answerValue)
+                                    getResources().getIdentifier((draw + answerValue)
                                             , null, FiveActivity.this.getPackageName()));
                         }
                     }

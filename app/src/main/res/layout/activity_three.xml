@@ -13,13 +13,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image11"
         app:layout_constraintEnd_toStartOf="@+id/image02"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image00"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image00"
@@ -29,13 +29,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image11"
         app:layout_constraintEnd_toStartOf="@+id/image01"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image10"
@@ -45,13 +45,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image20"
         app:layout_constraintEnd_toStartOf="@+id/image11"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image00"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image12"
@@ -60,13 +60,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image22"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image11"
         app:layout_constraintTop_toBottomOf="@+id/image02"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image02"
@@ -75,13 +75,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image01"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image21"
@@ -90,13 +90,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/CheckButton"
         app:layout_constraintEnd_toStartOf="@+id/image22"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image20"
         app:layout_constraintTop_toBottomOf="@+id/image11"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image11"
@@ -105,13 +105,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/image21"
         app:layout_constraintEnd_toStartOf="@+id/image12"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image10"
         app:layout_constraintTop_toBottomOf="@+id/image01"
-        app:srcCompat="@drawable/aa"
-        android:scaleType="centerCrop" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image22"
@@ -121,13 +121,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/CheckButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image21"
         app:layout_constraintTop_toBottomOf="@+id/image12"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/image20"
@@ -137,13 +137,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toTopOf="@+id/CheckButton"
         app:layout_constraintEnd_toStartOf="@+id/image21"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image11"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
 
     <Button
@@ -170,13 +170,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:baselineAlignBottom="false"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageA1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/imageA1"
@@ -185,13 +185,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageA2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageA0"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
     <ImageView
         android:id="@+id/imageA2"
@@ -201,12 +201,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="centerCrop"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/imageA1"
         app:layout_constraintTop_toBottomOf="@+id/CheckButton"
-        app:srcCompat="@drawable/aa" />
+        app:srcCompat="@drawable/a00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

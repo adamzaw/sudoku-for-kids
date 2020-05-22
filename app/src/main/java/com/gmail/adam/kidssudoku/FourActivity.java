@@ -11,13 +11,13 @@ import android.widget.ImageView;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class FourActivity extends AppCompatActivity {
 
     private Sudoku s = new Sudoku();
 
     private static final String TAG = "FourActivity";
-    //private int[][] table = {{1, 0, 3}, {2, 3, 0}, {3, 1, 2}};
     private int[][] table = s.generate(4);
     private int[][] result = new int[4][4];
     private int answerNo = -1;
@@ -30,6 +30,9 @@ public class FourActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: started.");
 
         s.setSudoku(table);
+
+        Random random = new Random();
+        final String draw = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
 
         for (int i = 0; i < table.length; i++) {
             for (int j = 0; j < table.length; j++) {
@@ -88,7 +91,7 @@ public class FourActivity extends AppCompatActivity {
 
             if (stringImageViewEntry.getKey().contains("A")) {
                 stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
-                        ("@drawable/a0" + (second + 1)),
+                        (draw + (second + 1)),
                         null, this.getPackageName()));
 
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
@@ -105,7 +108,7 @@ public class FourActivity extends AppCompatActivity {
                 });
 
             } else {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier("@drawable/a0" +
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(draw +
                                 table[first][second]
                         , null, FourActivity.this.getPackageName()));
 
@@ -122,7 +125,7 @@ public class FourActivity extends AppCompatActivity {
                             }
                             result[first][second] = answerValue;
                             stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier(("@drawable/a0" + answerValue)
+                                    getResources().getIdentifier((draw + answerValue)
                                             , null, FourActivity.this.getPackageName()));
                         }
                     }
