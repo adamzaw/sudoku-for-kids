@@ -4,17 +4,25 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.gmail.adam.kidssudoku"
+        applicationId "com.gmail.adam.zawadka.kidssudoku"
         minSdkVersion 24
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def formattedDate = new Date().format('yyyyMMddHHmmss')
+                    def flavor = variant.name
+                    def versionName = variant.versionName
+                    outputFileName = "kids-sudoku_${versionName}_${flavor}_${formattedDate}.apk"
+                }
+            }
         }
     }
 }

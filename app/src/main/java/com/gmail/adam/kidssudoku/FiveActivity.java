@@ -1,7 +1,10 @@
 package com.gmail.adam.kidssudoku;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,12 +36,7 @@ public class FiveActivity extends AppCompatActivity {
 
         s.setSudoku(table);
 
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table.length; j++) {
-
-                result[i][j] = table[i][j];
-            }
-        }
+        tableToResult();
         Button checkButton = findViewById(R.id.checkButton);
 
         final ImageView image00 = findViewById(R.id.image00);
@@ -103,6 +101,85 @@ public class FiveActivity extends AppCompatActivity {
         imageViewHashMap.put("A4", imageA4);
 
 
+
+        draw();
+
+        final Context context = this;
+
+
+        checkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean fault = false;
+
+                int[][] solving = s.getSolving(table);
+                for (int i = 0; i < result.length; i++) {
+                    for (int j = 0; j < result[i].length; j++) {
+                        if (table[i][j] == 0 ) {
+                            if (result[i][j] == solving[i][j]) {
+                                imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
+                            } else {
+                                imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#CA2C2C"));
+                                fault = true;
+                            }
+                        } else {
+                            if(result[i][j] == 0)
+                            fault = true;
+                        }
+                    }
+                }
+                if (!fault) {
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                            context);
+
+                    // set title
+                    alertDialogBuilder.setTitle("You WON");
+
+                    // set dialog message
+                    alertDialogBuilder.setMessage("You WON!!!\nNew game?");
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // if this button is clicked, close
+                            // current activity
+                            table = s.generate(5);
+                            tableToResult();
+                            for (ImageView imageView : imageViewHashMap.values()) {
+                                imageView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                            }
+                            draw();
+                        }
+                    });
+                    alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // if this button is clicked, just close
+                            // the dialog box and do nothing
+                            dialog.cancel();
+                        }
+                    });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+            }
+        });
+
+    }
+
+    void tableToResult() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table.length; j++) {
+                result[i][j] = table[i][j];
+            }
+        }
+    }
+
+
+    void draw() {
+        Random random = new Random();
+        final String path = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
             final int first = ((int) stringImageViewEntry.getKey().charAt(0) - 48);
             final int second = ((int) stringImageViewEntry.getKey().charAt(1) - 48);
@@ -120,7 +197,7 @@ public class FiveActivity extends AppCompatActivity {
                         if (answerNo != -1) {
                             imageViewHashMap.get("A" + (answerNo - 1)).setBackgroundColor(Color.parseColor("#FAF6F6"));
                         }
-                        stringImageViewEntry.getValue().setBackgroundColor(Color.parseColor("#13EF1C"));
+                        stringImageViewEntry.getValue().setBackgroundColor(Color.parseColor("#efe013"));
                         answerNo = second + 1;
 
                     }
@@ -151,26 +228,5 @@ public class FiveActivity extends AppCompatActivity {
                 });
             }
         }
-
-
-        checkButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                for (int i = 0; i < result.length; i++) {
-                    for (int j = 0; j < result[i].length; j++) {
-                        if (table[i][j] == 0) {
-                            if (s.check(i, j, result[i][j], result)) {
-                                imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
-                            } else {
-                                imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#CA2C2C"));
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
     }
 }

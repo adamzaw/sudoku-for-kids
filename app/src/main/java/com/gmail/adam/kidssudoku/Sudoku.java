@@ -5,11 +5,18 @@ import java.util.Random;
 
 class Sudoku {
 
-    int[][] result = new int[3][3];
-    int[][] table = new int[3][3];
+    int[][] result;
+    int[][] table;
+
 
     void setSudoku(int[][] sudoku) {
-        this.table = sudoku;
+        table = new int[sudoku.length][sudoku[0].length];
+
+         for (int i = 0; i < sudoku.length; i++) {
+             for (int j = 0; j < sudoku[0].length; j++) {
+                 table[i][j] = sudoku[i][j];
+             }
+        }
         result = Arrays.copyOf(table, table.length);
     }
 
@@ -17,7 +24,7 @@ class Sudoku {
 
 
         for (int i = 0; i < sudoku.length; i++) {
-            if (sudoku[row][i] == value && i != col || sudoku[i][col] == value && i != row) {
+            if (sudoku[row][i] == value && i != col || sudoku[i][col] == value && i != row || value == 0) {
 
                 return false;
             }
@@ -47,6 +54,14 @@ class Sudoku {
             return false;
         }
         return next(row, col, sukoku.length - 1);
+    }
+
+    int[][] getSolving(int[][] puzzle) {
+
+        setSudoku(puzzle);
+        solve(0, 0, result);
+
+        return result;
     }
 
     int[][] generate(int size) {
