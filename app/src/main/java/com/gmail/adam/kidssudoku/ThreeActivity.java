@@ -106,7 +106,7 @@ public class ThreeActivity extends AppCompatActivity {
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            int answerNo = -1;
+                            answerNo = -1;
                             table = s.generate(3);
                             tableToResult();
                             for (ImageView imageView : imageViewHashMap.values()) {
