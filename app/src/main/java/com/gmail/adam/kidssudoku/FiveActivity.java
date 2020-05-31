@@ -101,7 +101,6 @@ public class FiveActivity extends AppCompatActivity {
         imageViewHashMap.put("A4", imageA4);
 
 
-
         draw();
 
         final Context context = this;
@@ -115,7 +114,7 @@ public class FiveActivity extends AppCompatActivity {
                 int[][] solving = s.getSolving(table);
                 for (int i = 0; i < result.length; i++) {
                     for (int j = 0; j < result[i].length; j++) {
-                        if (table[i][j] == 0 ) {
+                        if (table[i][j] == 0) {
                             if (result[i][j] == solving[i][j]) {
                                 imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
                             } else {
@@ -123,8 +122,8 @@ public class FiveActivity extends AppCompatActivity {
                                 fault = true;
                             }
                         } else {
-                            if(result[i][j] == 0)
-                            fault = true;
+                            if (result[i][j] == 0)
+                                fault = true;
                         }
                     }
                 }
@@ -133,16 +132,15 @@ public class FiveActivity extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                             context);
 
-                    // set title
+
                     alertDialogBuilder.setTitle("You WON");
 
-                    // set dialog message
-                    alertDialogBuilder.setMessage("You WON!!!\nNew game?");
+
+                    alertDialogBuilder.setMessage("You You solve the puzzle\nNew game?");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, close
-                            // current activity
+                            int answerNo = -1;
                             table = s.generate(5);
                             tableToResult();
                             for (ImageView imageView : imageViewHashMap.values()) {
@@ -153,13 +151,11 @@ public class FiveActivity extends AppCompatActivity {
                     });
                     alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
                             dialog.cancel();
                         }
                     });
 
-                    // create alert dialog
+
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
                 }

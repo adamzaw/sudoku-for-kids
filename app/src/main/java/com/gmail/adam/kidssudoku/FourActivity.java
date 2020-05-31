@@ -81,7 +81,6 @@ public class FourActivity extends AppCompatActivity {
         imageViewHashMap.put("A3", imageA3);
 
 
-
         draw();
 
         final Context context = this;
@@ -95,7 +94,7 @@ public class FourActivity extends AppCompatActivity {
                 int[][] solving = s.getSolving(table);
                 for (int i = 0; i < result.length; i++) {
                     for (int j = 0; j < result[i].length; j++) {
-                        if (table[i][j] == 0 ) {
+                        if (table[i][j] == 0) {
                             if (result[i][j] == solving[i][j]) {
                                 imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
                             } else {
@@ -103,8 +102,8 @@ public class FourActivity extends AppCompatActivity {
                                 fault = true;
                             }
                         } else {
-                            if(result[i][j] == 0)
-                            fault = true;
+                            if (result[i][j] == 0)
+                                fault = true;
                         }
                     }
                 }
@@ -113,16 +112,14 @@ public class FourActivity extends AppCompatActivity {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                             context);
 
-                    // set title
-                    alertDialogBuilder.setTitle("You WON");
 
-                    // set dialog message
-                    alertDialogBuilder.setMessage("You WON!!!\nNew game?");
+                    alertDialogBuilder.setTitle("You WON!!!");
+
+                    alertDialogBuilder.setMessage("You solve the puzzle\nNew game?");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, close
-                            // current activity
+                            int answerNo = -1;
                             table = s.generate(4);
                             tableToResult();
                             for (ImageView imageView : imageViewHashMap.values()) {
@@ -133,13 +130,12 @@ public class FourActivity extends AppCompatActivity {
                     });
                     alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
+
                             dialog.cancel();
                         }
                     });
 
-                    // create alert dialog
+
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
                 }

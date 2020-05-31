@@ -79,7 +79,7 @@ public class ThreeActivity extends AppCompatActivity {
                 int[][] solving = s.getSolving(table);
                 for (int i = 0; i < result.length; i++) {
                     for (int j = 0; j < result[i].length; j++) {
-                        if (table[i][j] == 0 ) {
+                        if (table[i][j] == 0) {
                             if (result[i][j] == solving[i][j]) {
                                 imageViewHashMap.get("" + i + j).setBackgroundColor(Color.parseColor("#13EF1C"));
                             } else {
@@ -87,29 +87,26 @@ public class ThreeActivity extends AppCompatActivity {
                                 fault = true;
                             }
                         } else {
-                            if(result[i][j] == 0)
-                            fault = true;
+                            if (result[i][j] == 0)
+                                fault = true;
                         }
                     }
                 }
 
 
-                // show it
                 if (!fault) {
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                             context);
 
-                    // set title
+
                     alertDialogBuilder.setTitle("You WON");
 
-                    // set dialog message
-                    alertDialogBuilder.setMessage("You WON!!!\nNew game?");
+                    alertDialogBuilder.setMessage("You solve the puzzle\nNew game?");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, close
-                            // current activity
+                            int answerNo = -1;
                             table = s.generate(3);
                             tableToResult();
                             for (ImageView imageView : imageViewHashMap.values()) {
@@ -121,13 +118,11 @@ public class ThreeActivity extends AppCompatActivity {
                     });
                     alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            // if this button is clicked, just close
-                            // the dialog box and do nothing
+
                             dialog.cancel();
                         }
                     });
 
-                    // create alert dialog
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
                 }
@@ -149,6 +144,8 @@ public class ThreeActivity extends AppCompatActivity {
     void draw() {
         Random random = new Random();
         final String path = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
+        int jump = random.ints(0, 4).findFirst().getAsInt();
+
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
             final int first = ((int) stringImageViewEntry.getKey().charAt(0) - 48);
             final int second = ((int) stringImageViewEntry.getKey().charAt(1) - 48);
