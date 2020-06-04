@@ -24,7 +24,7 @@ public class ThreeActivity extends AppCompatActivity {
     //private int[][] table = {{1, 0, 3}, {2, 3, 0}, {3, 1, 2}};
     private int[][] table = s.generate(3);
     private int[][] result = new int[3][3];
-    private int answerNo = -1;
+    private int answerNo = 0;
     private HashMap<String, ImageView> imageViewHashMap = new HashMap<String, ImageView>();
 
     @Override
@@ -106,7 +106,7 @@ public class ThreeActivity extends AppCompatActivity {
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            answerNo = -1;
+                            answerNo = 0;
                             table = s.generate(3);
                             tableToResult();
                             for (ImageView imageView : imageViewHashMap.values()) {
@@ -160,7 +160,7 @@ public class ThreeActivity extends AppCompatActivity {
 
                     @Override
                     public void onClick(View v) {
-                        if (answerNo != -1) {
+                        if (answerNo != 0) {
                             imageViewHashMap.get("A" + (answerNo - 1)).setBackgroundColor(Color.parseColor("#FAF6F6"));
                         }
                         stringImageViewEntry.getValue().setBackgroundColor(Color.parseColor("#efe013"));
@@ -177,7 +177,7 @@ public class ThreeActivity extends AppCompatActivity {
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (table[first][second] == 0 && answerNo != -1) {
+                        if (table[first][second] == 0 && answerNo != 0) {
                             int answerValue;
                             if (result[first][second] != answerNo) {
                                 answerValue = answerNo;
