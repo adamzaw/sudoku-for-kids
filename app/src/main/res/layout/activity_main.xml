@@ -7,34 +7,54 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/three"
+        android:id="@+id/three_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/four"
-        app:layout_constraintEnd_toEndOf="@+id/four"
+        android:text="@string/label_three"
+        app:layout_constraintBottom_toTopOf="@+id/four_button"
+        app:layout_constraintEnd_toEndOf="@+id/four_button"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/four"
-        app:layout_constraintStart_toStartOf="@+id/four"
+        app:layout_constraintStart_toEndOf="@+id/four_button"
+        app:layout_constraintStart_toStartOf="@+id/four_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/four"
+        android:id="@+id/four_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/five"
-        app:layout_constraintEnd_toEndOf="@+id/five"
-        app:layout_constraintStart_toStartOf="@+id/five"
-        app:layout_constraintTop_toBottomOf="@+id/three" />
+        android:text="@string/label_four"
+        app:layout_constraintBottom_toTopOf="@+id/five_button"
+        app:layout_constraintEnd_toEndOf="@+id/five_button"
+        app:layout_constraintStart_toStartOf="@+id/five_button"
+        app:layout_constraintTop_toBottomOf="@+id/three_button" />
 
     <Button
-        android:id="@+id/five"
+        android:id="@+id/five_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
+        android:text="@string/label_five"
+        app:layout_constraintBottom_toTopOf="@+id/info_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/four_button" />
+
+    <Button
+        android:id="@+id/info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_info"
+        app:layout_constraintBottom_toTopOf="@+id/exit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/five_button" />
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/four" />
+        app:layout_constraintTop_toBottomOf="@+id/info_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>

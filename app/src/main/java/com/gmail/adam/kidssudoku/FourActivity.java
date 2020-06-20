@@ -9,10 +9,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 
@@ -26,6 +28,12 @@ public class FourActivity extends AppCompatActivity {
     private int answerNo = 0;
     private HashMap<String, ImageView> imageViewHashMap = new HashMap<String, ImageView>();
 
+    Random random = new Random();
+    String path = "@drawable/A";
+    HashSet<Integer> images = new HashSet<>();
+    int[] imagesPath;
+    Button checkButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +45,7 @@ public class FourActivity extends AppCompatActivity {
         tableToResult();
 
 
-        Button checkButton = findViewById(R.id.checkButton);
+        checkButton = findViewById(R.id.checkButton);
 
         final ImageView image00 = findViewById(R.id.image00);
         final ImageView image01 = findViewById(R.id.image01);
@@ -81,11 +89,23 @@ public class FourActivity extends AppCompatActivity {
         imageViewHashMap.put("A3", imageA3);
 
 
+        randomizeImages();
         draw();
+        setValueOnClick();
 
+    }
+
+    void tableToResult() {
+        for (int i = 0; i < table.length; i++) {
+            for (int j = 0; j < table.length; j++) {
+
+                result[i][j] = table[i][j];
+            }
+        }
+    }
+
+    void setValueOnClick() {
         final Context context = this;
-
-
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,65 +127,27 @@ public class FourActivity extends AppCompatActivity {
                         }
                     }
                 }
+
                 if (!fault) {
+                    winMassage(context);
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                            context);
-
-
-                    alertDialogBuilder.setTitle("You WON!!!");
-
-                    alertDialogBuilder.setMessage("You solve the puzzle\nNew game?");
-                    alertDialogBuilder.setCancelable(false);
-                    alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            answerNo = 0;
-                            table = s.generate(4);
-                            tableToResult();
-                            for (ImageView imageView : imageViewHashMap.values()) {
-                                imageView.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                            }
-                            draw();
-                        }
-                    });
-                    alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-
-                            dialog.cancel();
-                        }
-                    });
-
-
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                } else {
+                    v.startAnimation(AnimationUtils.loadAnimation(context,
+                            R.anim.shake));
+                    for (ImageView value : imageViewHashMap.values()) {
+                        value.findViewById(value.getId()).startAnimation(AnimationUtils.loadAnimation(context,
+                                R.anim.shake));
+                    }
                 }
+
             }
         });
-    }
 
-    void tableToResult() {
-        for (int i = 0; i < table.length; i++) {
-            for (int j = 0; j < table.length; j++) {
-
-                result[i][j] = table[i][j];
-            }
-        }
-    }
-
-
-    void draw() {
-        Random random = new Random();
-        final String path = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt() + "0";
         for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
             final int first = ((int) stringImageViewEntry.getKey().charAt(0) - 48);
             final int second = ((int) stringImageViewEntry.getKey().charAt(1) - 48);
 
-
             if (stringImageViewEntry.getKey().contains("A")) {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
-                        (path + (second + 1)),
-                        null, this.getPackageName()));
-
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
 
                     @Override
@@ -178,12 +160,7 @@ public class FourActivity extends AppCompatActivity {
 
                     }
                 });
-
             } else {
-                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(path +
-                                table[first][second]
-                        , null, FourActivity.this.getPackageName()));
-
                 stringImageViewEntry.getValue().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -196,13 +173,105 @@ public class FourActivity extends AppCompatActivity {
                                 answerValue = 0;
                             }
                             result[first][second] = answerValue;
-                            stringImageViewEntry.getValue().setImageResource(
-                                    getResources().getIdentifier((path + answerValue)
-                                            , null, FourActivity.this.getPackageName()));
+                            if (answerValue == 0) {
+                                stringImageViewEntry.getValue().setImageResource(
+                                        getResources().getIdentifier((path + "00")
+                                                , null, FourActivity.this.getPackageName()));
+                            } else {
+                                String temp;
+                                if (imagesPath[(answerValue - 1)] < 10) {
+                                    temp = "0" + imagesPath[(answerValue - 1)];
+                                } else {
+                                    temp = "" + imagesPath[(answerValue - 1)];
+                                }
+                                stringImageViewEntry.getValue().setImageResource(
+                                        getResources().getIdentifier((path + temp)
+                                                , null, FourActivity.this.getPackageName()));
+                            }
                         }
                     }
                 });
             }
         }
     }
+
+
+    void draw() {
+
+        for (final Map.Entry<String, ImageView> stringImageViewEntry : imageViewHashMap.entrySet()) {
+            final int first = ((int) stringImageViewEntry.getKey().charAt(0) - 48);
+            final int second = ((int) stringImageViewEntry.getKey().charAt(1) - 48);
+
+
+            if (stringImageViewEntry.getKey().contains("A")) {
+                String temp;
+                if (imagesPath[second] < 10) {
+                    temp = "0" + imagesPath[second];
+                } else {
+                    temp = "" + imagesPath[second];
+                }
+                stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(
+                        (path + temp),
+                        null, this.getPackageName()));
+
+
+            } else {
+                if (table[first][second] == 0)
+                    stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(path + "00"
+                            , null, FourActivity.this.getPackageName()));
+                else {
+                    String temp;
+                    if (imagesPath[(table[first][second] - 1)] < 10) {
+                        temp = "0" + imagesPath[(table[first][second] - 1)];
+                    } else {
+                        temp = "" + imagesPath[(table[first][second] - 1)];
+                    }
+                    stringImageViewEntry.getValue().setImageResource(getResources().getIdentifier(path +
+                                    temp
+                            , null, FourActivity.this.getPackageName()));
+                }
+
+            }
+        }
+    }
+
+    void randomizeImages() {
+        path = "@drawable/" + (char) random.ints(97, 99).findFirst().getAsInt();
+        images.clear();
+        while (images.size() <= table.length) {
+            images.add((Integer) random.ints(1, 13).findFirst().getAsInt());
+        }
+        imagesPath = images.stream().mapToInt(Number::intValue).toArray();
+    }
+
+    void winMassage(Context context) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        alertDialogBuilder.setTitle("You WON");
+        alertDialogBuilder.setMessage("You solve the puzzle\nNew game?");
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                answerNo = 0;
+                table = s.generate(4);
+                tableToResult();
+                for (ImageView imageView : imageViewHashMap.values()) {
+                    imageView.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                }
+                randomizeImages();
+                draw();
+
+            }
+        });
+        alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
 }

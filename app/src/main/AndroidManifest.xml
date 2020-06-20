@@ -29,6 +29,9 @@
             android:name=".FiveActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".Info"
+            android:label="@string/label_info"
+            android:theme="@android:style/Theme.Dialog" />
     </application>
 
 </manifest>

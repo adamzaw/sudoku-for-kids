@@ -2,7 +2,6 @@ package com.gmail.adam.kidssudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,13 +19,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started.");
 
-        Button threeButton = findViewById(R.id.three);
-        Button fourButton = findViewById(R.id.four);
-        Button fiveButton = findViewById(R.id.five);
-
-        threeButton.setText("3x3");
-        fourButton.setText("4x4");
-        fiveButton.setText("5x5");
+        Button threeButton = findViewById(R.id.three_button);
+        Button fourButton = findViewById(R.id.four_button);
+        Button fiveButton = findViewById(R.id.five_button);
+        Button infoButton = findViewById(R.id.info_button);
+        Button exitButton = findViewById(R.id.exit_button);
 
         threeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,18 +31,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(v.getContext(), ThreeActivity.class));
             }
         });
-
         fourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), FourActivity.class));
             }
         });
-
         fiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), FiveActivity.class));
+            }
+        });
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), Info.class));
+            }
+        });
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

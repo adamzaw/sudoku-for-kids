@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Kids Sudoku</string>
+    <string name="label_info">Game information</string>
+    <string name="info_content">\
+        A puzzle game based on sudoku rules.
+        Fill the board in such a way to avoid repetition in columns and rows. </string>
+    <string name="label_three">3x3</string>
+    <string name="label_four">4x4</string>
+    <string name="label_five">5x5</string>
+    <string name="label_exit">Exit</string>
 </resources>
