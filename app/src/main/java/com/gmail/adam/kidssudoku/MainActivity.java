@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "Menu";
 
 
     @Override
@@ -28,19 +28,25 @@ public class MainActivity extends AppCompatActivity {
         threeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), ThreeActivity.class));
+                Intent intent = new Intent(v.getContext(), Game.class);
+                intent.putExtra("LEVEL", 3);
+                startActivity(intent);
             }
         });
         fourButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), FourActivity.class));
+                Intent intent = new Intent(v.getContext(), Game.class);
+                intent.putExtra("LEVEL", 4);
+                startActivity(intent);
             }
         });
         fiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), FiveActivity.class));
+                Intent intent = new Intent(v.getContext(), Game.class);
+                intent.putExtra("LEVEL", 5);
+                startActivity(intent);
             }
         });
         infoButton.setOnClickListener(new View.OnClickListener() {
